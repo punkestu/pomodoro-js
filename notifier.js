@@ -30,5 +30,5 @@ module.exports = function (type) {
     title: notification.pushNotification.title,
     message: notification.pushNotification.message,
   });
-  childProcess.exec(`play ./sounds/${type}.wav`);
+  childProcess.exec(`play ${__dirname}/sounds/${type}.wav`);
 };
