@@ -18,11 +18,11 @@ function pomodoro(work, breakTime) {
   }
   isWork = !isWork;
   if (isWork) {
-    notifier("work").then();
+    notifier("work");
     console.log(" |Work started:", new Date().toLocaleTimeString());
     setTimeout(() => pomodoro(work, breakTime), work * 60 * 1000);
   } else {
-    notifier("break").then();
+    notifier("break");
     console.log(" |Break started:", new Date().toLocaleTimeString());
     setTimeout(() => pomodoro(work, breakTime), breakTime * 60 * 1000);
   }

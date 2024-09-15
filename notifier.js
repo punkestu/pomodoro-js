@@ -1,4 +1,5 @@
 const notifier = require("node-notifier");
+const childProcess = require("child_process");
 
 async function sleep(ms) {
   return new Promise((resolve) => {
@@ -23,14 +24,11 @@ const notifications = {
   },
 };
 
-module.exports = async function (type) {
+module.exports = function (type) {
   const notification = notifications[type];
   notifier.notify({
     title: notification.pushNotification.title,
     message: notification.pushNotification.message,
   });
-  for (let i = 0; i < notification.noiseLength; i++) {
-    process.stdout.write("\u0007");
-    await sleep(100);
-  }
+  childProcess.exec(`play ./sounds/${type}.wav`);
 };
